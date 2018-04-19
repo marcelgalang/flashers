@@ -6,12 +6,14 @@ import FlashcardPage from './flashcardPage'
 
 const FlashcardsIndex = ({ flashcards }) =>{
 
+  let card = flashcards[0]
+
+
   return (
     <div>
 
-    {flashcards.map(flashcard => (
-      <FlashcardPage flashcard={flashcard} key={flashcard.id}/>))}
 
+    <FlashcardPage flashcard={card} key={card.id}/>
 
     </div>
     )

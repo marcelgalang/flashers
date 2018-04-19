@@ -17,7 +17,6 @@ class CategoriesIndex extends Component {
   }
 
   handleChange(){
-    console.log("got here")
     this.setState({currentCategoryId: this.refs.categorySelector.value})
   }
   debugger

@@ -1,25 +1,42 @@
 import React, { Component } from 'react'
 
-const FlashcardPage = ({flashcard}) => {
-  let isClicked = false
-  let sides = isClicked ? (
-    <h1>{flashcard.a_side}</h1>) :
-  (<h1>{flashcard.b_side}</h1>)
-  const onFlip = () => {
-    var x = document.getElementById("answer");
-    x.style.display === "none" ? x.style.display = "block" : x.style.display = "none"
+class FlashcardPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+
+      isFlipped: false
+    };
+    this.onFlip = this.onFlip.bind(this);
+
   }
-  return (
 
-    <div>
+  onFlip = () => {
+    this.setState(prevState => ({
+      isFlipped: !prevState.isFlipped
+    }));
+  }
 
-      <h1 onClick={onFlip} >{flashcard.a_side}</h1>
-      <h1 id='answer' display="none">{flashcard.b_side}</h1>
+  render(){
+    console.log("On FC page")
+
+    const flashcard = this.props.flashcard
+    const side = this.state.isFlipped ? (<h1 onClick={this.onFlip} >{flashcard.b_side}</h1>) : (<h1 onClick={this.onFlip} >{flashcard.a_side}</h1>)
+
+    return(
+
+      <div>
+
+        {side}
 
 
-    </div>
+      </div>
 
-    )
+
+      )
+  }
 }
+
 
 export default FlashcardPage
